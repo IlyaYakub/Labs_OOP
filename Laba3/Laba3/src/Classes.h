@@ -66,7 +66,7 @@ protected:
 //  ласс "„лен комиссии"
 class CommissionMember : virtual public Human {
 public:
-    CommissionMember() = default;
+    CommissionMember();
     CommissionMember(
         const std::string& commission_name,
         const std::string& appointment_year,
@@ -97,13 +97,8 @@ protected:
 class TeacherCommissionMember : public TeacherUniversity, public CommissionMember {
 public:
     TeacherCommissionMember() = default;
-    TeacherCommissionMember(const std::string& job_title,          const std::string& academic_degree, 
-                            const std::string& speciality,         const std::vector<std::string>& science_works,
-                            const std::string& commission_name,    const std::string& appointment_year, 
-                            const std::string& certificate_number, const std::vector<std::string>& biography,
-                            const std::vector<std::string>& commission_works);
-
     TeacherCommissionMember(const TeacherCommissionMember& tcm) = default;
+    TeacherCommissionMember(const std::vector<std::string> commision_works);
     ~TeacherCommissionMember() = default;
 
     const std::vector<std::string>& getCommissionWorks() const { return commission_works; }
