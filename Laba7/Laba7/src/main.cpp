@@ -40,16 +40,20 @@ int main() {
     float RandomArray[sizeN2]{};
     float FormulaBasedArray[sizeN3]{}; // c(i) = a(i) - 1 / b(i)
 
-    float deltaX = 0.5f;
+    const float deltaX = 0.2f;
+    float tempX = 0.2f;
 
     try 
     {
         // Заполнение массива LnArray
         for (int i = 0; i < sizeN1; ++i) {
-            if (deltaX > 0.0f) {
-                LnArray[i] = std::log(deltaX);
+            float result = tempX * tempX - 1;
+            if ((result) > 0.0f) {
+                LnArray[i] = std::log(result);
             }
-            deltaX += 0.5f;
+            else
+                LnArray[i] = 0.0f;
+            tempX += deltaX;
         }
         std::cout << "\nLnArray = ";
         PrintInfoArray(LnArray, sizeN1);
